@@ -1,0 +1,7 @@
+//Source: https://www.h2database.com/html/download.html
+
+//Repository https://github.com/koushikkothagal
+
+//Launch the H2 DB server
+$cd devProjects\devknowledge\JavaBrains\'JPA and Hibernate - code'\h2-2023-09-17\h2\bin>
+$ .\h2.bat
