@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 public class JpaStarterMain {
 
     public static void main(String[] args) {
+        /*
         Employee employee = new Employee();
         employee.setName("Foo1 Bar");
         employee.setSsn("123");
@@ -19,16 +20,18 @@ public class JpaStarterMain {
 
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-*//*
+
         // Update
         entityManager.persist(employee1);
-*//*
+
 
         // Remove an entity
         entityManager.remove(employee1);
         transaction.commit();
         entityManager.close();
-        factory.close();*/
+        factory.close();
+
+        */
 
 
         // Save a new Entity
