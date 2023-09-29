@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,7 +22,7 @@ import lombok.Generated;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Column(name = "age")
@@ -38,6 +39,11 @@ public class Employee {
 
     @Transient
     private String debugString;
+
+    //private int accessCardId;
+
+    @OneToOne
+    private AccessCard card;
 
     private transient String debugString2;
 
