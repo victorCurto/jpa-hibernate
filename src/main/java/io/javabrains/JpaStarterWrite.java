@@ -1,6 +1,8 @@
 package io.javabrains;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -33,7 +35,6 @@ public class JpaStarterWrite {
 
         */
 
-
         // Save a new Entity
         Employee employee1 = new Employee();
         employee1.setName("Foo2 Bar");
@@ -65,6 +66,20 @@ public class JpaStarterWrite {
         //card2.setOwner(employee2);
         employee2.setCard(card2);
 
+        PayStub payStub1 = new PayStub();
+        payStub1.setPayPeriodStart(new Date());
+        payStub1.setPayPeriodEnd(new Date());
+        payStub1.setSalary(1000);
+        payStub1.setEmployee(employee1);
+
+        PayStub payStub2 = new PayStub();
+        payStub2.setPayPeriodStart(new Date());
+        payStub2.setPayPeriodEnd(new Date());
+        payStub2.setSalary(2000);
+        payStub2.setEmployee(employee1);
+
+        employee1.setPayStub(List.of(payStub1, payStub2));
+
         // 3 get an entity manager from a factory
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("myApp");
         EntityManager entityManager = factory.createEntityManager();
@@ -72,10 +87,16 @@ public class JpaStarterWrite {
         EntityTransaction transaction = entityManager.getTransaction();
 
         transaction.begin();
+
         entityManager.persist(employee1);
         entityManager.persist(employee2);
+
         entityManager.persist(card1);
         entityManager.persist(card2);
+
+        entityManager.persist(payStub1);
+        entityManager.persist(payStub2);
+
         transaction.commit();
 
         entityManager.close();

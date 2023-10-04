@@ -25,5 +25,10 @@ public class JpaStarterRead {
         Employee employee = entityManager.find(Employee.class, 1);
         System.out.println("Employee: "+ employee);
         System.out.println("Employee.card: "+ employee.getCard());
+        //System.out.println("Employee.payStubs: "+ employee.getPayStub());
+
+        PayStub payStub = entityManager.find(PayStub.class, 5);
+        System.out.println("PayStub: "+payStub);
+        System.out.println("PayStub.employee: "+payStub.getEmployee());
     }
 }

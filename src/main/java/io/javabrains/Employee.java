@@ -1,16 +1,17 @@
 package io.javabrains;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -47,6 +48,9 @@ public class Employee {
     @OneToOne(cascade = CascadeType.ALL) //Owns the relationship - create a card_id with the foreign Key to card
     @JoinColumn(name = "card_id", referencedColumnName = "id")
     private AccessCard card;
+
+    @OneToMany(mappedBy = "employee") //Employee -> OneToMany -> List<PayStub>
+    private List<PayStub> payStub;
 
     private transient String debugString2;
 
