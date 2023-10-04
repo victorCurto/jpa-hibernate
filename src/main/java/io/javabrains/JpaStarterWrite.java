@@ -55,14 +55,14 @@ public class JpaStarterWrite {
         card1.setIssuedDate(new Date());
         card1.setActive(true);
         card1.setFirmwareVersion("1.0.0");
-        //employee1.setAccessCardId(card1.getId());
+        //card1.setOwner(employee1);
         employee1.setCard(card1);
 
         AccessCard card2 = new AccessCard();
         card2.setIssuedDate(new Date());
         card2.setActive(false);
         card2.setFirmwareVersion("1.2.0");
-        //employee2.setAccessCardId(card2.getId());
+        //card2.setOwner(employee2);
         employee2.setCard(card2);
 
         // 3 get an entity manager from a factory
