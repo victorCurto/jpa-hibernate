@@ -2,10 +2,12 @@ package io.javabrains;
 
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import lombok.Data;
 
@@ -17,8 +19,12 @@ public class PayStub {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @Column(name = "start")
     private Date payPeriodStart;
+
+    @Column(name = "ended")
     private Date payPeriodEnd;
+
     private float salary;
 
     /*
@@ -26,6 +32,7 @@ public class PayStub {
     *  Many PayStubs belongs to One employee: ( PayStub -> @ManyToOne -> Employee )
     * */
     @ManyToOne
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
     @Override

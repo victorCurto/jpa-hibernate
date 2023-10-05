@@ -6,6 +6,7 @@ This guide will help you set up the project by downloading the H2 Database and l
 
 - Git installed on your system
 - Java Development Kit (JDK) installed
+- Docker (optional)
 
 ## Setup
 For both approaches we need to download the respective drivers and add them to classPath
