@@ -8,8 +8,9 @@ This guide will help you set up the project by downloading the H2 Database and l
 - Java Development Kit (JDK) installed
 
 ## Setup
+For both approaches we need to download the respective drivers and add them to classPath
 
-### With docker (postgres Database) :
+### With docker (postgres Database):
 ```bash
 //In case of Docker daemon is down
 $ service docker start
@@ -21,7 +22,7 @@ $ docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres --name pg1 postgres
 $ docker start pg1
 ```
 
-### With H2 Database
+### With H2 Database:
 
 #### 1. Download the H2 Database
 
