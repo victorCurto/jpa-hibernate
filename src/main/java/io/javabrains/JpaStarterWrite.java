@@ -1,6 +1,5 @@
 package io.javabrains;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -56,14 +55,14 @@ public class JpaStarterWrite {
         card1.setIssuedDate(new Date());
         card1.setActive(true);
         card1.setFirmwareVersion("1.0.0");
-        //card1.setOwner(employee1);
+        card1.setOwner(employee1);
         employee1.setCard(card1);
 
         AccessCard card2 = new AccessCard();
         card2.setIssuedDate(new Date());
         card2.setActive(false);
         card2.setFirmwareVersion("1.2.0");
-        //card2.setOwner(employee2);
+        card2.setOwner(employee2);
         employee2.setCard(card2);
 
         PayStub payStub1 = new PayStub();
@@ -71,14 +70,14 @@ public class JpaStarterWrite {
         payStub1.setPayPeriodEnd(new Date());
         payStub1.setSalary(1000);
         payStub1.setEmployee(employee1);
+        employee1.addPayStub(payStub1);
 
         PayStub payStub2 = new PayStub();
         payStub2.setPayPeriodStart(new Date());
         payStub2.setPayPeriodEnd(new Date());
         payStub2.setSalary(2000);
         payStub2.setEmployee(employee1);
-
-        employee1.setPayStub(List.of(payStub1, payStub2));
+        employee1.addPayStub(payStub2);
 
         // 3 get an entity manager from a factory
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("myApp");

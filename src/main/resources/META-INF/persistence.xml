@@ -6,19 +6,33 @@
     <persistence-unit name="myApp" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
-            <!-- JPA specification -->
+            <!-- JPA specification h2 -->
+<!--
             <property name="javax.persistence.jdbc.url"    value="jdbc:h2:tcp://localhost/~/test" />
-            <!--<property name="javax.persistence.jdbc.url"    value="jdbc:h2:mem:test" />-->
+&lt;!&ndash;            <property name="javax.persistence.jdbc.url"    value="jdbc:h2:mem:test" /> &ndash;&gt;
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
             <property name="javax.persistence.jdbc.user" value="sa" />
             <property name="javax.persistence.jdbc.password" value="" />
-            <!-- provider specification -->
+            &lt;!&ndash; provider specification &ndash;&gt;
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+            <property name="hibernate.hbm2ddl.auto" value="none" />
+-->
+
+            <!-- JPA specification postgres -->
+            <property name="javax.persistence.jdbc.url"    value="jdbc:postgresql://localhost:5432/postgres" />
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /> <!-- DB Driver -->
+            <property name="javax.persistence.jdbc.user" value="postgres" />
+            <property name="javax.persistence.jdbc.password" value="postgres" />
+            <!-- provider specification -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/> <!-- DB Dialect -->
+            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
             <property name="hibernate.hbm2ddl.auto" value="none" />
 
-            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
         </properties>
     </persistence-unit>
 </persistence>
