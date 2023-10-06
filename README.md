@@ -9,7 +9,12 @@ This guide will help you set up the project by downloading the H2 Database and l
 - Docker (optional)
 
 ## Setup
-For both approaches we need to download the respective drivers and add them to classPath
+
+### Dependencies (external Libraries)
+- hibernate-core-5.5.6.Final.jar (Hibernate)
+- javax.persistence-api-2.2.jar (JPA)
+- lombok-1.18.30.jar (project Lombok)
+- postgresql-42.6.0.jar or h2-2.2.224.jar (DB driver)
 
 ### With docker (postgres Database):
 ```bash
