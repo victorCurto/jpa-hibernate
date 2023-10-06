@@ -18,7 +18,7 @@ public class EmailGroup {
 
     private String name;
 
-    @ManyToMany(mappedBy = "emailGroups")
+    @ManyToMany(mappedBy = "emailGroups", fetch = FetchType.LAZY)
     private List<Employee> members = new ArrayList<>();
     /*
      * To create a many to many relationship I need and extra "join table"

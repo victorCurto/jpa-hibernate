@@ -40,7 +40,11 @@ public class Employee {
     @OneToMany(mappedBy = "employee") //Employee -> OneToMany -> List<PayStub>
     private List<PayStub> payStub = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "EMAIL_GROUP_SUBSCRIPTIONS",
+        joinColumns = @JoinColumn(name = "employee_id"),
+        inverseJoinColumns = @JoinColumn(name = "subscription_email_id")
+    )
     private List<EmailGroup> emailGroups = new ArrayList<>();
 
     private transient String debugString2;

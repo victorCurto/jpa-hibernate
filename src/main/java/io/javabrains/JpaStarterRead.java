@@ -25,6 +25,7 @@ public class JpaStarterRead {
         System.out.println("********************* Fetched Employee from card");
         System.out.println("Employee from card: "+card.getOwner());
 */
+/*
 
         // @ManyToOne and @OneToMany relationship
         Employee employee = entityManager.find(Employee.class, 1);
@@ -40,6 +41,13 @@ public class JpaStarterRead {
 //        PayStub payStub = entityManager.find(PayStub.class, 5);
 //        System.out.println("PayStub: " + payStub);
 //        System.out.println("PayStub.employee: " + payStub.getEmployee());
+*/
+
+        // @ManyToMany relationship
+        EmailGroup emailGroup = entityManager.find(EmailGroup.class, 7);
+        System.out.println("Got email grou. Now accessing members");
+        System.out.println(emailGroup.getMembers());
+
 
     }
 }
