@@ -79,6 +79,20 @@ public class JpaStarterWrite {
         payStub2.setEmployee(employee1);
         employee1.addPayStub(payStub2);
 
+        EmailGroup group1 = new EmailGroup();
+        group1.setName("Company Watercooler discussions");
+        group1.addMember(employee1);
+        group1.addMember(employee2);
+        employee1.addEmailSubscription(group1);
+        employee2.addEmailSubscription(group1);
+
+        EmailGroup group2 = new EmailGroup();
+        group2.setName("Engineering");
+        employee1.addEmailSubscription(group2);
+        group2.addMember(employee1);
+
+
+
         // 3 get an entity manager from a factory
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("myApp");
         EntityManager entityManager = factory.createEntityManager();
@@ -95,6 +109,9 @@ public class JpaStarterWrite {
 
         entityManager.persist(payStub1);
         entityManager.persist(payStub2);
+
+        entityManager.persist(group1);
+        entityManager.persist(group2);
 
         transaction.commit();
 
