@@ -37,7 +37,7 @@ public class Employee {
     @JoinColumn(name = "card_id", referencedColumnName = "id")
     private AccessCard card;
 
-    @OneToMany(mappedBy = "employee") //Employee -> OneToMany -> List<PayStub>
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.REMOVE) //Employee -> OneToMany -> List<PayStub>
     private List<PayStub> payStub = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
