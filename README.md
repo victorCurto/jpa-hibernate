@@ -1,4 +1,4 @@
-# jpa_hibernate - Setup Instructions
+# jpa-hibernate - Setup Instructions
 
 This guide will help you set up the project by downloading the H2 Database and launching the H2 DB server.
 
