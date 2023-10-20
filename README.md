@@ -5,7 +5,7 @@ This guide will help you set up the project by downloading the H2 Database and l
 ## Prerequisites
 
 - Git installed on your system
-- Java Development Kit (JDK) installed
+- Java 17 Development Kit (JDK)
 - Docker (optional)
 
 ## Setup
@@ -27,6 +27,10 @@ $ docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres --name pg1 postgres
 // re-start the container 
 $ docker start pg1
 ```
+Default credentials:
+- user: postgres
+- password: postgres
+
 
 ### With H2 Database:
 
