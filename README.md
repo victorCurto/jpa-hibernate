@@ -4,9 +4,22 @@ This guide will help you set up the project by downloading the H2 Database and l
 
 ## Prerequisites
 
-- Git installed on your system
+- git version 2.25.1
+```
+ $ git version
+```
 - Java 17 Development Kit (JDK)
+```
+ $ java -version
+```
+- Apache Maven 3.9.1
+```
+$ mvn -version
+```
 - Docker (optional)
+```
+$ docker -v
+``` 
 
 ## Setup
 
@@ -58,4 +71,4 @@ $ ./h2.sh
 ## Source
 Repository https://github.com/koushikkothagal
 
-next: 39
+next: 40
