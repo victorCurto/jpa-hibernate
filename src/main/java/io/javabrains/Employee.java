@@ -11,6 +11,8 @@ import lombok.Data;
 @Entity
 @Table(name = "EMPLOYEE_DATA")
 @Data
+@NamedQuery(query="select e from Employee e order by e.name", name="emp name acs")
+@NamedQuery(query="select e from Employee e where e.age > :age order by e.name", name="emp name and age acs")
 public class Employee {
 
     @Id
@@ -71,7 +73,7 @@ public class Employee {
             ", type=" + type +
             ", debugString='" + debugString + '\'' +
             ", card_id=" + card.getId() +  // Dangerous, be carefully with  "recursive" toString()
-            ", payStub size=" + payStub.size() + // Dangerous, be carefully with  "recursive" toString()
+            //", payStub size=" + payStub.size() + // Dangerous, be carefully with  "recursive" toString()
             ", debugString2='" + debugString2 + '\'' +
             ", ssn='" + ssn + '\'' +
             '}';

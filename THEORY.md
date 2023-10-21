@@ -96,3 +96,16 @@ Note:
 
 
 ### JPQL - Java Persistence Query Language
+
+Allows to perform queries against entities
+
+1. Avoiding SQL injection with JPQL parameters (':parameter' )
+```
+   int minAge = 25;
+   TypedQuery<Employee> query = entityManager.createQuery("select e from Employee e where e.age > :minAge", Employee.class);
+   query.setParameter("minAge", minAge);   
+```
+
+2. Named queries 
+Allow us to organize our queries, when we know some queries that we will use many times for example
+   - apply @NamedQuery annotation in the entity

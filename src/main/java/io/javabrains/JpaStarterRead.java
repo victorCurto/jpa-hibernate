@@ -45,7 +45,7 @@ public class JpaStarterRead {
 
         // @ManyToMany relationship
         EmailGroup emailGroup = entityManager.find(EmailGroup.class, 7);
-        System.out.println("Got email grou. Now accessing members");
+        System.out.println("Got email group. Now accessing members");
         System.out.println(emailGroup.getMembers());
 
 
