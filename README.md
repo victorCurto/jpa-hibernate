@@ -68,6 +68,27 @@ $ chmod +x h2.sh
 $ ./h2.sh
 ```
 
+## This project has 2 parts
+### 1) jpa-hibernate
+This is a maven project with just JPA and Hibernate dependencies to explore all the JPA features
+####Structure
+
+> persistence.xml (src/main/resources/META-INF/persistence.xml) <br>
+
+Persistence unit with all the information where the DB is and how to connect to it
+
+
+
+### 2) SpringBoot JPA example
+This is a module in the project that consist in a SpringBoot project with 2 dependencies:
+1. spring-boot-starter-data-jpa    
+2. h2 / Postgres
+
+The way to provide data for the persistence context is by using a properties file<br>
+__The 'Spring boot JPA API' is a wrapper for the 'JPA API'__
+
+
+
 ## Source
 Repository https://github.com/koushikkothagal
 
