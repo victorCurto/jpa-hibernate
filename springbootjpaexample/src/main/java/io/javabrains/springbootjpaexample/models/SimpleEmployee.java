@@ -24,4 +24,6 @@ public class SimpleEmployee {
     @Column(name = "employee_ssn", unique = true, length = 10, nullable = false, updatable = false)
     private String ssn;
 
+
+
 }

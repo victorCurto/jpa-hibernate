@@ -88,6 +88,24 @@ The way to provide data for the persistence context is by using a properties fil
 __The 'Spring boot JPA API' is a wrapper for the 'JPA API'__
 
 
+In a SpringBoot JPA project we can have multiple approaches:
+1) Inject EntityManagerFactory - used to read and write
+2) EntityManager - shared entity manager - used to read (because threads)
+3) Spring Repository interface (ex. CrudRepository) -  Spring boot wrapper about JPA
+   - declarative transaction manager (the concept of proxy)
+     Spring boot allow us to do declarative transactions instead of imperative transactions
+```
+   @EnableTransactionManagement        
+   @Transactional
+```
+
+```
+   @Repository
+   public interface MyRepository extends CrudRepository<MyEntity, PrimaryKeyType> {
+
+```
+
+
 
 ## Source
 Repository https://github.com/koushikkothagal
