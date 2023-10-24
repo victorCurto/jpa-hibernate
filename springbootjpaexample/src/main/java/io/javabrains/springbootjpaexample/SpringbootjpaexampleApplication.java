@@ -6,12 +6,11 @@ import io.javabrains.springbootjpaexample.repository.EmployeeRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.PersistenceContextType;
 import jakarta.persistence.PersistenceUnit;
 import jakarta.transaction.Transactional;
-import java.sql.SQLException;
+import jakarta.transaction.Transactional.TxType;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -19,6 +18,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Date;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+/*
+* Imp - related to transaction we have to options:
+*  - jakarta.transaction.Transactional;
+*  - org.springframework.transaction.annotation.Transactional;
+ */
+
 
 @SpringBootApplication
 @EnableTransactionManagement
@@ -48,6 +53,7 @@ public class SpringbootjpaexampleApplication {
     }
 
     @PostConstruct // ensure that this method runs when the application starts
+    @Transactional(readOnly = true)
     public void tart(){
         SimpleEmployee e = new SimpleEmployee();
         e.setAge(20);
@@ -79,11 +85,22 @@ public class SpringbootjpaexampleApplication {
 
     }
 
-    @Transactional(rollbackOn = SQLException.class) //(declarative approach) the rollback specify it will only rollback if SQLException.class
+    @Transactional
+    private void updateEmployeeAndAccessCard(){
+        //employeeRepository.save(e);
+        updateEmployee(e); // transaction propagation - by default the @Transaction will leverage an existing transaction (if already exists one transaction don't create a new one)
+        accessCardRepository.save(a);
+    }
+
+    //@Transactional(rollbackOn = SQLException.class) //(declarative approach) the rollback specify it will only rollback if SQLException.class
+    //@Transactional(value = TxType.REQUIRED) // Default
+    //@Transactional(value = TxType.REQUIRES_NEW) // Don't care if exists an existing one, I will create a new one transaction for this method
+    //@Transactional(value = TxType.NOT_SUPPORTED) // Specify that this method should not be a part of a transaction - if this method is called when a transaction is happening is WRONG, it will throw an error
+    @Transactional(value = TxType.MANDATORY) //Specify that this method needs a transaction but it will not crate a new one (the caller must provide the transaction)
     private void updateEmployee(SimpleEmployee simpleEmployee){
         // Get Transaction (imperative approach)
         // Start Transaction (imperative approach)
-        simpleEmployee.setName("My new Name");
+        simpleEmployee.setName("Vitor Gil");
         employeeRepository.save(simpleEmployee);
         // End Transaction (imperative approach)
         // Handle rollback (imperative approach)

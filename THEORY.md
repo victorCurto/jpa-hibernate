@@ -1,6 +1,6 @@
 # JPA
 
-### Annotations:
+pxl
 => class:<br>
 @Entity -> specifies an class that is an entity
 @Table(name = "TABLE_NAME") -> name the table in the DB
@@ -109,3 +109,8 @@ Allows to perform queries against entities
 2. Named queries 
 Allow us to organize our queries, when we know some queries that we will use many times for example
    - apply @NamedQuery annotation in the entity
+
+---
+
+# SpringBoot project and JPA
+

@@ -107,6 +107,33 @@ In a SpringBoot JPA project we can have multiple approaches:
 
 
 
+Related to transactions we have two ways of implement them:
+1)  - jakarta.transaction.Transactional;
+2)  - org.springframework.transaction.annotation.Transactional;
+
+Options:
+```
+@Transactional(value = TxType.REQUIRED) // Default
+@Transactional(value = TxType.REQUIRES_NEW) // Don't care if exists an existing one, I will create a new one transaction for this method
+@Transactional(value = TxType.NOT_SUPPORTED) // Specify that this method should not be a part of a transaction - if this method is called when a transaction is happening is WRONG, it will throw an error
+@Transactional(value = TxType.MANDATORY) //Specify that this method needs a transaction but it will not crate a new one (the caller must provide the transaction)
+```
+
+In a transaction you can specify the way/when you will do a rollbacK:
+```
+@Transactional(rollbackOn = SQLException.class) //(declarative approach) the rollback specify it will only rollback if SQLException.class
+```
+
+
+
+__Read only transactions__:<br>
+When you want for example three different entities put them all together in one dataStructure and send to the user
+Warning: maybe between the different reads happens a write....
+```
+@Transactional(readOnly = true) // I specify thant I'm reading and not block any other transaction (improve preformance)
+```
+
+
 ## Source
 Repository https://github.com/koushikkothagal
 
