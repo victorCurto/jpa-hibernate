@@ -7,6 +7,10 @@
     <groupId>io.javabrains</groupId>
     <artifactId>jpa-starter</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>flyway_sql</module>
+    </modules>
 
     <dependencies>
         <dependency>
